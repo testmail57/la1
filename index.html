@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+var htmlCode = `
+
+#la1
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\begin{document}
+\pagestyle{fancy}
+\title{LaTeX Project}
+\fancyhf{} % clear existing header/footer entries
+\fancyhead{} % clear all header fields
+\fancyhead[R]{LaTeX Project}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LO,CE]{Sapthagiri college of engineering}
+\fancyfoot[R]{\thepage}
+\maketitle
+\section{About SCE}
+Sapthagiri College of Engineering, Bangalore popularly known as SCE is the brain child of the well
+known industrialist and philanthropist Shri.Mr. G. Dayanand, the Chairman of the Governing Board of
+the College. SCE is a self-financed Institution approved by AICTE, affiliated to Visvesvaraya
+Technological University. The college offers 7 UG courses and 2 PG Courses with an annual intake of
+1068 students. The over all students strength of the college is 3000.
+Vision and Mission The vision of the institution is to create and maintain an enabling learning
+environment for the students to transform them as thorough professionals to meet diverse professional
+demands of global environments The mission of the institution is to provide quality education to the
+students to pursue courses in different engineering disciplines and to transform their professional dreams
+into reality and to offer competent budding professionals to the society.
+subsection{Program Education Objectives}
+\begin{itemize}
+\item PEO1: Graduates will have a strong foundation in fundamentals to solve Engineering problems in
+different domains.
+\item PEO2: Graduates will have successful careers as computer Science Engineers and be able to lead
+and manage teams.
+\item PEO3: Graduates will instill interpersonal skills and attitudes in the process of Life long learning.
+\end {itemize}
+\subsection{Program Specific Outcomes}
+\begin{itemize}
+\item PSO1: Ability to adapt to a rapidly changing environment by learning and employing new
+programming skills and technologies.
+\item PSO2: Ability to use diverse knowledge across the domains with inter personnel skills to deliver
+the industry need.
+\end {itemize}
+4
+\end{document}
+
+`
+
+document.getElementById("myInput").value = htmlCode;
+
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value.replace(/&lt;/g, '<'));
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
